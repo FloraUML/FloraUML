@@ -11,6 +11,7 @@ dependencies = [
  "flora_model 0.1.0",
  "flora_parser 0.1.0",
  "flora_syntax 0.1.0",
+ "flora_syntax_to_model 0.1.0",
 ]
 
 [[package]]
@@ -32,6 +33,14 @@ dependencies = [
 [[package]]
 name = "flora_syntax"
 version = "0.1.0"
+
+[[package]]
+name = "flora_syntax_to_model"
+version = "0.1.0"
+dependencies = [
+ "flora_model 0.1.0",
+ "flora_syntax 0.1.0",
+]
 
 [[package]]
 name = "libc"
