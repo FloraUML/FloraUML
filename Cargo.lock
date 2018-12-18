@@ -10,6 +10,7 @@ dependencies = [
  "flora_dot_gen 0.1.0",
  "flora_model 0.1.0",
  "flora_parser 0.1.0",
+ "flora_syntax 0.1.0",
 ]
 
 [[package]]
@@ -24,8 +25,13 @@ version = "0.1.0"
 name = "flora_parser"
 version = "0.1.0"
 dependencies = [
+ "flora_syntax 0.1.0",
  "nom 4.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
+
+[[package]]
+name = "flora_syntax"
+version = "0.1.0"
 
 [[package]]
 name = "libc"

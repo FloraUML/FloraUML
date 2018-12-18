@@ -8,10 +8,12 @@ edition = "2018"
 flora_model = { path = "./model" }
 flora_parser = { path = "./parser" }
 flora_dot_gen = { path = "./dot_gen" }
+flora_syntax = { path = "./syntax" }
 
 [workspace]
 members = [
+  "dot_gen",
   "model",
   "parser",
-  "dot_gen",
+  "syntax",
 ]
