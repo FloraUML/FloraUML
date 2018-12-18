@@ -1,0 +1,6 @@
+[workspace]
+members = [
+  "model",
+  "parser",
+  "cli",
+]
