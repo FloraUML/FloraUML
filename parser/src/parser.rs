@@ -1,5 +1,5 @@
 use crate::class::class_declaration;
-use crate::types::*;
+use flora_syntax::*;
 use nom::types::CompleteStr as Input;
 use nom::*;
 

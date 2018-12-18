@@ -1,4 +1,4 @@
-use super::ClassDeclaration;
+use flora_syntax::ClassDeclaration;
 use nom::types::CompleteStr as Input;
 use nom::*;
 

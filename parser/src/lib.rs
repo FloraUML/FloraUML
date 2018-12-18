@@ -1,12 +1,9 @@
 mod class;
 mod error;
 mod parser;
-mod types;
-
-pub use crate::types::*;
 
 use crate::parser::declarations;
-use crate::types::Declarations;
+use flora_syntax::*;
 use nom::types::CompleteStr as Input;
 use nom::*;
 
