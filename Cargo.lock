@@ -2,9 +2,14 @@
 name = "flora"
 version = "0.1.0"
 dependencies = [
+ "flora_dot_gen 0.1.0",
  "flora_model 0.1.0",
  "flora_parser 0.1.0",
 ]
+
+[[package]]
+name = "flora_dot_gen"
+version = "0.1.0"
 
 [[package]]
 name = "flora_model"
