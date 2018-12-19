@@ -5,6 +5,9 @@ authors = ["Tim Seckinger <seckinger.tim@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+flora_parser = { path = './parser' }
+flora_syntax_to_model = { path = './syntax_to_model' }
+flora_dot_gen = { path = './dot_gen' }
 
 [workspace]
 members = [
