@@ -1,0 +1,18 @@
+os:
+  - linux
+  - osx
+
+language: rust
+cache: cargo
+
+env:
+  global:
+    - RUST_BACKTRACE=1
+
+before_script:
+  - rustup component add rustfmt
+
+script:
+  - cargo fmt --verbose --all -- --check
+  - cargo build --verbose --all
+  - cargo test --verbose --all
