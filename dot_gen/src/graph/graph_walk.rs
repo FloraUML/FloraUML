@@ -11,15 +11,12 @@ impl<'a> dot::GraphWalk<'a, Node<'a>, Edge> for Graph<'a> {
         Cow::Owned(
             self.0
                 .keys()
-                .cloned()
                 .enumerate()
                 .flat_map(|(i, from)| {
                     self.0
                         .keys()
                         .skip(i + 1)
-                        .cloned()
-                        .map(|to| (from, to))
-                        .collect::<Vec<_>>()
+                        .map(move |to| (*from, *to))
                 })
                 .collect(),
         )
