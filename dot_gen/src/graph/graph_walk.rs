@@ -12,12 +12,7 @@ impl<'a> dot::GraphWalk<'a, Node<'a>, Edge> for Graph<'a> {
             self.0
                 .keys()
                 .enumerate()
-                .flat_map(|(i, from)| {
-                    self.0
-                        .keys()
-                        .skip(i + 1)
-                        .map(move |to| (*from, *to))
-                })
+                .flat_map(|(i, from)| self.0.keys().skip(i + 1).map(move |to| (*from, *to)))
                 .collect(),
         )
     }
