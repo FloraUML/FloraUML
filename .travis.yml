@@ -1,18 +1,18 @@
 os:
-  - linux
-  - osx
+    - linux
+    - osx
 
 language: rust
 cache: cargo
 
 env:
-  global:
-    - RUST_BACKTRACE=1
+    global:
+        - RUST_BACKTRACE=1
 
 before_script:
-  - rustup component add rustfmt clippy
+    - rustup component add rustfmt clippy
 
 script:
-  - cargo fmt --verbose --all -- --check
-  - cargo clippy --all-targets --all-features -- -D warnings
-  - cargo test --verbose --all
+    - cargo fmt --verbose --all -- --check
+    - cargo clippy --all-targets --all-features -- -D warnings
+    - cargo test --verbose --all

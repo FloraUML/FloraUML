@@ -1,30 +1,30 @@
 environment:
-  global:
-    PROJECT_NAME: flora
-    RUST_BACKTRACE: 1
-  matrix:
-    #- TARGET: i686-pc-windows-gnu
-    #- TARGET: i686-pc-windows-msvc
-    #- TARGET: x86_64-pc-windows-gnu
-    - TARGET: x86_64-pc-windows-msvc
+    global:
+        PROJECT_NAME: flora
+        RUST_BACKTRACE: 1
+    matrix:
+        #- TARGET: i686-pc-windows-gnu
+        #- TARGET: i686-pc-windows-msvc
+        #- TARGET: x86_64-pc-windows-gnu
+        - TARGET: x86_64-pc-windows-msvc
 
 cache:
-  - C:\Users\appveyor\.cargo\registry
-  - target
+    - C:\Users\appveyor\.cargo\registry
+    - target
 
 install:
-  - curl -sSf -o rustup-init.exe https://win.rustup.rs/
-  - rustup-init.exe -y --default-host %TARGET% --default-toolchain stable
-  - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
-  - rustc -V
-  - cargo -V
+    - curl -sSf -o rustup-init.exe https://win.rustup.rs/
+    - rustup-init.exe -y --default-host %TARGET% --default-toolchain stable
+    - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
+    - rustc -V
+    - cargo -V
 
 test_script:
-  - cargo build --verbose --all
-  - cargo test --verbose --all
+    - cargo build --verbose --all
+    - cargo test --verbose --all
 
 build: false
 
 notifications:
-  - provider: Email
-    on_build_success: false
+    - provider: Email
+      on_build_success: false
