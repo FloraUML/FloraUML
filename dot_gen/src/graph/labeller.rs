@@ -8,7 +8,8 @@ impl<'a> dot::Labeller<'a, Node<'a>, Edge> for Graph<'a> {
     // nodes
 
     fn node_id(&self, node: &Node) -> dot::Id {
-        dot::Id::new(format!("node_{}", node)).expect(&format!("Invalid name for node: '{}'", node))
+        dot::Id::new(format!("node_{}", node))
+            .unwrap_or_else(|()| panic!("Invalid name for node: '{}'", node))
     }
 
     fn node_label(&self, node: &Node<'a>) -> dot::LabelText {
