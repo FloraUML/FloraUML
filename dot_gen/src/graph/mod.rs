@@ -10,5 +10,5 @@ type Node<'a> = &'a str;
 type Edge = (usize, usize);
 
 pub fn model_to_graph<'a>(model: &Model<'a>) -> Graph<'a> {
-    Graph(model.iter().cloned().enumerate().collect())
+    Graph(model.classes.iter().cloned().enumerate().collect())
 }

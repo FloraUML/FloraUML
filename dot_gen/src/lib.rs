@@ -22,7 +22,7 @@ mod tests {
     #[test]
     fn empty() {
         assert_eq!(
-            get_dot(&vec![]),
+            get_dot(&Model { classes: vec![] }),
             "graph g {
 }
 "
@@ -32,7 +32,9 @@ mod tests {
     #[test]
     fn fully_connected() {
         assert_eq!(
-            get_dot(&vec!["A", "B", "C"]),
+            get_dot(&Model {
+                classes: vec!["A", "B", "C"]
+            }),
             r#"graph g {
     node_A[label="A"];
     node_B[label="B"];

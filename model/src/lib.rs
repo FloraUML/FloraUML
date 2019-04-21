@@ -1,1 +1,4 @@
-pub type Model<'a> = Vec<&'a str>;
+#[derive(Debug, PartialEq)]
+pub struct Model<'a> {
+    pub classes: Vec<&'a str>,
+}

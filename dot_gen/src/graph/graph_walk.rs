@@ -20,12 +20,12 @@ impl<'a> dot::GraphWalk<'a, Node<'a>, Edge> for Graph<'a> {
     fn source(&self, edge: &Edge) -> Node {
         self.0
             .get(&edge.0)
-            .expect(&format!("Failed to find source node of edge {:?}", edge))
+            .unwrap_or_else(|| panic!("Failed to find source node of edge {:?}", edge))
     }
 
     fn target(&self, edge: &Edge) -> Node {
         self.0
             .get(&edge.1)
-            .expect(&format!("Failed to find target node of edge {:?}", edge))
+            .unwrap_or_else(|| panic!("Failed to find target node of edge {:?}", edge))
     }
 }

@@ -11,7 +11,7 @@ named!(
 named!(
     declaration<Input, Declaration>,
     ws!(alt!(
-        map!(class_declaration, |declaration| Declaration::Class(declaration))
+        map!(class_declaration, Declaration::Class)
     ))
 );
 
