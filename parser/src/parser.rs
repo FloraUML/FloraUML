@@ -1,15 +1,13 @@
 use crate::class::class_declaration;
 use flora_syntax::*;
-use nom::types::CompleteStr as Input;
-use nom::*;
+use nom::{map, multi::many0, named, ws, IResult};
+
+pub fn declarations(input: &str) -> IResult<&str, Declarations> {
+    many0(declaration)(input)
+}
 
 named!(
-    pub declarations<Input, Declarations>,
-    many0!(declaration)
-);
-
-named!(
-    declaration<Input, Declaration>,
+    declaration<&str, Declaration>,
     ws!(alt!(
         map!(class_declaration, Declaration::Class)
     ))
@@ -21,26 +19,23 @@ mod tests {
 
     #[test]
     fn empty() {
-        assert_eq!(declarations(Input("")), Ok((Input(""), vec![])))
+        assert_eq!(declarations(""), Ok(("", vec![])))
     }
 
     #[test]
     fn single_class_declaration() {
         assert_eq!(
-            declarations(Input("class A;")),
-            Ok((
-                Input(""),
-                vec![Declaration::Class(ClassDeclaration { name: "A" })]
-            ))
+            declarations("class A;"),
+            Ok(("", vec![Declaration::Class(ClassDeclaration { name: "A" })]))
         )
     }
 
     #[test]
     fn ws_between_class_declarations() {
         assert_eq!(
-            declarations(Input("class A; class B;\nclass C;")),
+            declarations("class A; class B;\nclass C;"),
             Ok((
-                Input(""),
+                "",
                 vec![
                     Declaration::Class(ClassDeclaration { name: "A" }),
                     Declaration::Class(ClassDeclaration { name: "B" }),
@@ -53,9 +48,9 @@ mod tests {
     #[test]
     fn not_a_declaration() {
         assert_eq!(
-            declarations(Input("class A;x")),
+            declarations("class A;x"),
             Ok((
-                Input("x"),
+                "x",
                 vec![Declaration::Class(ClassDeclaration { name: "A" })]
             ))
         )
