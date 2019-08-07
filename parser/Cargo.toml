@@ -7,4 +7,4 @@ edition = "2018"
 [dependencies]
 flora_syntax = { path = "../syntax" }
 
-nom = "^4.1.1"
+nom = "^5.0.0"
