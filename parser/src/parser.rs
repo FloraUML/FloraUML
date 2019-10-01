@@ -1,17 +1,14 @@
 use crate::class::class_declaration;
 use flora_syntax::*;
-use nom::{map, multi::many0, named, ws, IResult};
+use nom::{combinator::map, multi::many0, IResult};
 
 pub fn declarations(input: &str) -> IResult<&str, Declarations> {
     many0(declaration)(input)
 }
 
-named!(
-    declaration<&str, Declaration>,
-    ws!(alt!(
-        map!(class_declaration, Declaration::Class)
-    ))
-);
+fn declaration(input: &str) -> IResult<&str, Declaration> {
+    map(class_declaration, Declaration::Class)(input)
+}
 
 #[cfg(test)]
 mod tests {
