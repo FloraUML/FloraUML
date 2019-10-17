@@ -22,9 +22,12 @@ install:
 test_script:
     - cargo build --verbose --all
     - cargo test --verbose --all
+    - false
 
 build: false
 
 notifications:
     - provider: Email
-      on_build_success: false
+      to:
+        - "{{commitAutherEmail}}"
+      on_build_status_changed: true
