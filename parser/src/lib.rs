@@ -4,22 +4,21 @@ mod parser;
 
 use crate::parser::declarations;
 use flora_syntax::*;
-use nom::types::CompleteStr as Input;
-use nom::*;
+use nom::{eof, named, terminated};
 
 // TODO nice errors
 pub use crate::error::ParseError;
 
 pub fn parse(input: &str) -> Result<Declarations, ParseError> {
-    match declarations_eof(Input(input)) {
-        Ok((Input(""), declarations)) => Ok(declarations),
+    match declarations_eof(input) {
+        Ok(("", declarations)) => Ok(declarations),
         Ok((rest, _)) => panic!(format!("Trailing characters after EOF: {}", rest)),
         Err(err) => Err(format!("Parser error: {:?}", err)),
     }
 }
 
 named!(
-    declarations_eof<Input, Declarations>,
+    declarations_eof<&str, Declarations>,
     terminated!(declarations, eof!())
 );
 
